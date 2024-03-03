@@ -3,12 +3,18 @@
   import Footer from "../components/Footer.svelte";
   import Header from "../components/Header.svelte";
 
-  let y;
+  let y = 0;
   let innerHeight = 0;
   let innerWidth = 0;
 
   function goTop() {
-    document.body.scrollIntoView;
+    // Smoothly scroll to the top using requestAnimationFrame
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Enables smooth scrolling
+      });
+    });
   }
 </script>
 
@@ -23,7 +29,7 @@
   >
     <button
       on:click={goTop}
-      class="ml-auto rounded-full bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer"
+      class="ml-auto rounded-full aspect-square bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer"
     >
       <i class="fa-solid fa-arrow-up" />
     </button>
